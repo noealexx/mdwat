@@ -18,15 +18,15 @@ public class Checker extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String user = request.getParameter("user");
-        Set<Character> set = new TreeSet<>();
+        String user = request.getParameter("user"); //prende parametro di user della richiesta 
+        Set<Character> set = new TreeSet<>(); //set perchè non così non ci saranno duplicati e perchè è meglio lavorare su interfaccie
         if (user != null) {
-            for (char c : user.toCharArray()) {
-                set.add(Character.toLowerCase(c));
+            for (char c : user.toCharArray()) { //loop su tutti i caratteri di user + metodo che ritorna user, un array di caratteri 
+                set.add(Character.toLowerCase(c));// per ogni char, inserisci nel set, tutte minuscole
             }
         }
-        request.setAttribute("set", set);
-
+        request.setAttribute("set", set); //chiave- stringa, valore-object...salva set come attributo, all'interno di request.
+        									// attributo: è una sorta di parametro utile per comunicare dati al JSP. assegnando set a request JSP lo può leggere.
         RequestDispatcher rd = request.getRequestDispatcher("/s08/checker.jsp");
         rd.forward(request, response);
     }

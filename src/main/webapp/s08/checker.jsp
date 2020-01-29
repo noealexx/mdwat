@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ page import="java.util.*"%>
+<%@ page import="java.util.*"%> <!-- .* intende un po' di classi all'interno di java util -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +14,9 @@
             @SuppressWarnings("unchecked")
             Set<Character> set = (Set<Character>) request.getAttribute("set");
             if (set == null || set.isEmpty()) {
-                out.print("is empty");
+                out.print("is empty"); //printwriter 
             } else {
-                out.print("contains these letters:");
+                out.print("contains these letters:"); 
 
                 Iterator<Character> it = set.iterator();
                 while (it.hasNext()) {

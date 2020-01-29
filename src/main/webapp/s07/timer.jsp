@@ -1,4 +1,4 @@
-<%@ page import="java.time.LocalTime"%>
+<%@ page import="java.time.LocalTime"%> <!-- mix tra html e java; import libreria Java  -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +7,8 @@
 </head>
 <body>
     <h1>
-        <%
-            out.print(LocalTime.now());
+        <% //codice JSP. i simbolini permettono di inserire codice Java in un doc HTML
+            out.print(LocalTime.now()); //response
         %>
     </h1>
 </body>
