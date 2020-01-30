@@ -18,7 +18,7 @@ public class Fetcher extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("doc", new Document("JSP Cheatsheet", new User("Tom", 42)));
+        request.setAttribute("doc", new Document("JSP Cheatsheet", new User("Tom", 42))); //"doc" è chiave, il documento creato è il valore
 
         RequestDispatcher rd = request.getRequestDispatcher("/s13/fetch.jsp");
         rd.forward(request, response);

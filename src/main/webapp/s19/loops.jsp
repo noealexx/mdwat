@@ -8,8 +8,8 @@
 </head>
 <body>
     <p>Users</p>
-    <c:forEach var="user" items="${users}">
-        <p>${user.name},${user.id}</p>
+    <c:forEach var="user" items="${users}"> <!--looppo gli users e li metto dentro la var user-->
+        <p>${user.name}, ${user.id}</p>
     </c:forEach>
     <hr />
     <p>Values</p>

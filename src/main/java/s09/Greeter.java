@@ -19,23 +19,23 @@ public class Greeter extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        LocalTime start = (LocalTime) session.getAttribute("start");
+        HttpSession session = request.getSession(); //quando tomcat riceve una request, controlla nella session se c'è qualche cookie associato all'utente
+        LocalTime start = (LocalTime) session.getAttribute("start");//se fosse la prima sessione non ci sarà alcun attributo, quindi ritornerà un null. al contrario avremo un local time valido.
 
-        Duration duration;
-        if (start == null) {
+        Duration duration; //da quanto ttempo l'utente è collegato
+        if (start == null) { //quindi se fosse la prima volta che accede...
             duration = Duration.ZERO;
-            session.setAttribute("start", LocalTime.now());
+            session.setAttribute("start", LocalTime.now());// metterà l'ora attuale
         } else {
-            duration = Duration.between(start, LocalTime.now());
+            duration = Duration.between(start, LocalTime.now());//quanto tempo è passato dall'ultima volta che si è collegato e ora 
         }
 
-        if (request.getParameter("done") == null) {
-            request.setAttribute("duration", duration);
+        if (request.getParameter("done") == null) { //done è la chiave per dire che il lavoro è terminato
+            request.setAttribute("duration", duration); //metti attributo di quanto tempo è passato dal log
             RequestDispatcher rd = request.getRequestDispatcher("/s09/greeter.jsp");
             rd.forward(request, response);
         } else {
-            session.invalidate();
+            session.invalidate(); //disconnessione session
 
             response.setContentType("text/html");
             response.setCharacterEncoding("utf-8");

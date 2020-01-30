@@ -21,7 +21,7 @@ public class Loops extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         User[] users = new User[] { new User("Alpha", 1), new User("Beta", 2), new User("Gamma", 3) };
-        request.setAttribute("users", users);
+        request.setAttribute("users", users); //metto users creati dentro l'attributo
 
         Double[] values = new Double[12]; // ...
         for (int i = 0; i < values.length; i++) {
